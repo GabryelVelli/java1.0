@@ -1,0 +1,82 @@
+package uscs;
+
+public class Unidade2Ex2 {
+    
+    public static void main(String[] args) {
+        Aluno aluno1 = new Aluno();
+        Aluno aluno2 = new Aluno();
+        
+        aluno1.NomeAluno = "Paulo";
+        aluno1.Codmat = 55123;
+        aluno1.Cpf = "800912345-12";
+        aluno1.Sexo = 'M';
+        aluno1.Nota_P1 = 7.5;
+        aluno1.Nota_P2 = 5.6;
+        aluno1.Nota_P3  = 7.0;
+        
+        aluno2.NomeAluno = "Ana";
+        aluno2.Codmat = 991239;
+        aluno2.Cpf = "500876123-15";
+        aluno2.Sexo = 'F';
+        aluno2.Nota_P1 = 2.0;
+        aluno2.Nota_P2 = 6.0;
+        aluno2.Nota_P3 = 9.0;
+        
+        System.out.println("Informacoes do aluno: ");
+        aluno1.ImprimeAluno();
+        double M = aluno1.media();
+        aluno1.media = M;
+        System.out.println("Media do aluno: "+ M);
+        aluno1.Resultado();
+        //aluno 2//
+          
+    }
+}
+--------------------------------------------------------
+package uscs;
+
+public class Aluno {
+
+    //atributos
+    public String NomeAluno;
+    public int Codmat;
+    public String Cpf;
+    public char Sexo;
+    public double Nota_P1, Nota_P2, Nota_P3;
+    public double media;
+
+    //metodos
+    public void ImprimeAluno() {
+        System.out.println("Nome: " + NomeAluno);
+        System.out.println("Codigo de matricula: " + Codmat);
+        System.out.println("CPF: " + Cpf);
+        System.out.println("Sexo: " + Sexo);
+    }
+
+    public void ImprimeSexo() {
+        if (Sexo == 'M') {
+            System.out.println("Masculino");
+        } else if (Sexo == 'F') {
+            System.out.println("Feminino");
+        }
+    }
+    public double media(){
+        double MaiorNota1 = Math.max(Nota_P1,Math.max(Nota_P2,Nota_P3));
+        double MaiorNota2 = 0;
+        if (Nota_P1 == MaiorNota1){
+            MaiorNota2 = Math.max(Nota_P2,Nota_P3);
+        } else if (Nota_P2 == MaiorNota1){
+                MaiorNota2 = Math.max(Nota_P1,Nota_P3);
+                } else {
+            MaiorNota2 = Math.max(Nota_P1, Nota_P2);
+        }
+        return (MaiorNota1 + MaiorNota2)/2;
+    }
+    public void Resultado(){
+        if (media > 6){
+            System.out.println("Aprovado");
+} else {
+            System.out.println("Reprovado");  
+        }
+    }
+}
